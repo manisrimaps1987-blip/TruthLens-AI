@@ -1,0 +1,215 @@
+╔════════════════════════════════════════════════════════╗
+║  TruthLens AI - Automated Deployment Script             ║
+║  Quick Reference Card                                   ║
+╚════════════════════════════════════════════════════════╝
+
+🎯 WHAT YOU NEED (Prerequisites)
+═══════════════════════════════════════════════════════════
+
+✓ Git installed
+✓ GitHub account
+✓ GitHub repository created (TruthLensAI)
+✓ Personal Access Token (optional but recommended)
+
+═══════════════════════════════════════════════════════════
+
+🚀 HOW TO RUN
+═══════════════════════════════════════════════════════════
+
+OPTION 1: EASIEST - Double-Click Deploy.bat
+─────────────────────────────────────────────
+1. Navigate to: c:\Users\manis\OneDrive\Desktop\manisri\TruthLensAI\
+2. Find: Deploy.bat
+3. Double-click it
+4. Follow the on-screen prompts
+5. Done! ✅
+
+OPTION 2: PowerShell Direct
+─────────────────────────────────────────────
+1. Open PowerShell
+2. Navigate: cd "c:\Users\manis\OneDrive\Desktop\manisri\TruthLensAI"
+3. Run: .\Deploy-ToGitHub.ps1
+4. Follow the prompts
+5. Done! ✅
+
+═══════════════════════════════════════════════════════════
+
+📋 WHAT THE SCRIPT ASKS FOR
+═══════════════════════════════════════════════════════════
+
+1. GitHub Username
+   Example: john-doe
+
+2. GitHub Email
+   Example: john@example.com
+
+3. Repository exists? (yes/no)
+   Answer: yes (after creating repo on GitHub)
+
+4. Ready to push? (yes/no)
+   Answer: yes
+
+5. Authenticate with GitHub
+   Use Personal Access Token as password
+
+═══════════════════════════════════════════════════════════
+
+✅ SETUP CHECKLIST
+═══════════════════════════════════════════════════════════
+
+Before running the script:
+
+□ Git installed
+  Download: https://git-scm.com/download/win
+  Command: git --version (verify)
+
+□ GitHub account created
+  Go to: https://github.com/signup
+
+□ GitHub repository created
+  Go to: https://github.com/new
+  Name: TruthLensAI
+  Public: YES
+  License: MIT
+
+□ Personal Access Token created (recommended)
+  Go to: https://github.com/settings/tokens
+  Scope: repo
+  Save the token!
+
+═══════════════════════════════════════════════════════════
+
+⏱️ ESTIMATED TIME
+═══════════════════════════════════════════════════════════
+
+Getting Prerequisites:     15-30 minutes
+  - Install Git:         5 min
+  - Create GitHub repo:  10 min
+  - Generate token:      5 min
+
+Running Script:           1-2 minutes
+  - Automatic process    100%
+
+Total Time:               20-35 minutes
+
+═══════════════════════════════════════════════════════════
+
+🔑 IMPORTANT NOTES
+═══════════════════════════════════════════════════════════
+
+1. PERSONAL ACCESS TOKEN
+   • Use as password when script asks
+   • Keep it secure
+   • Can be regenerated if lost
+
+2. REPOSITORY NAME
+   • Must be exactly: TruthLensAI
+   • Must be Public
+   • License: MIT License
+
+3. GITHUB CREDENTIALS
+   • Username: your GitHub username (not email)
+   • Email: email associated with GitHub account
+
+4. IF AUTHENTICATION FAILS
+   • Make sure you used Personal Access Token
+   • NOT your GitHub password
+   • Token must have "repo" scope
+
+═══════════════════════════════════════════════════════════
+
+🎉 AFTER DEPLOYMENT
+═══════════════════════════════════════════════════════════
+
+Your code is now on GitHub!
+
+Next steps:
+
+1. Visit your repository:
+   https://github.com/YOUR_USERNAME/TruthLensAI
+
+2. Share with others or add to portfolio
+
+3. (Optional) Deploy to Streamlit Cloud:
+   https://streamlit.io/cloud
+
+4. Monitor and update as needed
+
+═══════════════════════════════════════════════════════════
+
+❓ TROUBLESHOOTING
+═══════════════════════════════════════════════════════════
+
+Git not found?
+→ Install from https://git-scm.com/download/win
+
+Script won't run?
+→ Right-click Deploy.bat and select "Run as Administrator"
+→ Or double-click Deploy.bat
+
+Authentication failed?
+→ Use Personal Access Token instead of password
+→ Generate: https://github.com/settings/tokens
+
+Repository not found?
+→ Make sure you created it at https://github.com/new
+→ Must be named "TruthLensAI"
+
+═══════════════════════════════════════════════════════════
+
+📚 FILES INCLUDED
+═══════════════════════════════════════════════════════════
+
+Deploy.bat
+  → Easy Windows launcher
+  → Just double-click!
+
+Deploy-ToGitHub.ps1
+  → PowerShell automated script
+  → ~500 lines of automation
+
+DEPLOYMENT_SCRIPT_GUIDE.md
+  → Detailed documentation
+  → Troubleshooting guide
+
+DEPLOYMENT_STATUS.txt
+  → Current project status
+  → Checklist
+
+═══════════════════════════════════════════════════════════
+
+🎯 RECOMMENDED APPROACH
+═══════════════════════════════════════════════════════════
+
+1. Ensure all prerequisites are ready ✓
+2. Double-click Deploy.bat ✓
+3. Enter GitHub credentials ✓
+4. Confirm repository exists ✓
+5. Script handles everything else automatically ✓
+6. Check repository on GitHub ✓
+
+═══════════════════════════════════════════════════════════
+
+💡 PRO TIPS
+═══════════════════════════════════════════════════════════
+
+• Keep personal access token saved for future updates
+• Use meaningful commit messages
+• Push updates regularly
+• Check GitHub actions for automation
+• Star your own repository! ⭐
+
+═══════════════════════════════════════════════════════════
+
+🚀 YOU'RE READY!
+═══════════════════════════════════════════════════════════
+
+Your automated deployment system is ready to use!
+
+Run: Deploy.bat
+Location: c:\Users\manis\OneDrive\Desktop\manisri\TruthLensAI\
+
+Good luck! 🎉
+
+═══════════════════════════════════════════════════════════
+TruthLens AI v1.0.0 | Automated Deployment

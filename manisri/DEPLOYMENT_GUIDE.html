@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens AI - GitHub Deployment Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .steps {
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .step h3 {
+            color: #333;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .step p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #e8f0fe;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #d8e5fd;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #45a049;
+        }
+        
+        .checklist {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist li:before {
+            content: "✓";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            color: #856404;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            color: #155724;
+            display: none;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .link-button:hover {
+            background: #5568d3;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 TruthLens AI</h1>
+            <p>GitHub Deployment - Interactive Guide</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+        
+        <div class="success-message" id="successMessage">
+            ✅ Step completed! Click next to continue.
+        </div>
+        
+        <div class="steps">
+            <!-- STEP 1 -->
+            <div class="step" id="step1">
+                <div>
+                    <span class="step-number">1</span>
+                    <h3>Install Git (If Not Installed)</h3>
+                </div>
+                <p>Git is required for version control and GitHub deployment.</p>
+                <div class="checklist">
+                    <ul>
+                        <li>Download Git from git-scm.com</li>
+                        <li>Run the installer with default settings</li>
+                        <li>Restart PowerShell/Terminal</li>
+                        <li>Verify: <code>git --version</code></li>
+                    </ul>
+                </div>
+                <div class="button-group">
+                    <a href="https://git-scm.com/download/win" target="_blank" class="link-button">📥 Download Git</a>
+                    <button class="btn-primary" onclick="completeStep(1)">✓ I've Installed Git</button>
+                </div>
+            </div>
+            
+            <!-- STEP 2 -->
+            <div class="step" id="step2">
+                <div>
+                    <span class="step-number">2</span>
+                    <h3>Create GitHub Account & Repository</h3>
+                </div>
+                <p>Go to GitHub and create a new repository for TruthLens AI.</p>
+                <div class="warning">
+                    ⚠️ Important: When creating the repository, select "Public" and choose "MIT License"
+                </div>
+                <div class="code-block">
+Repository Name: TruthLensAI
+Description: Intelligent Misinformation Detection System
+Public: ✓ YES
+License: MIT License
+Add README: NO (we have one)
+                </div>
+                <div class="button-group">
+                    <a href="https://github.com/new" target="_blank" class="link-button">🔗 Create Repository</a>
+                    <button class="btn-primary" onclick="completeStep(2)">✓ Repository Created</button>
+                </div>
+            </div>
+            
+            <!-- STEP 3 -->
+            <div class="step" id="step3">
+                <div>
+                    <span class="step-number">3</span>
+                    <h3>Create Personal Access Token</h3>
+                </div>
+                <p>Create a token for authentication instead of using your password.</p>
+                <div class="checklist">
+                    <ul>
+                        <li>Go to GitHub Settings → Developer settings → Personal access tokens</li>
+                        <li>Click "Generate new token (classic)"</li>
+                        <li>Name: "TruthLens AI Deployment"</li>
+                        <li>Select "repo" scope (full control of repositories)</li>
+                        <li>Copy the token and save it securely</li>
+                    </ul>
+                </div>
+                <div class="warning">
+                    ⚠️ Important: You can only see the token once! Copy it immediately after generation.
+                </div>
+                <div class="button-group">
+                    <a href="https://github.com/settings/tokens" target="_blank" class="link-button">🔐 Generate Token</a>
+                    <button class="btn-primary" onclick="completeStep(3)">✓ Token Created & Saved</button>
+                </div>
+            </div>
+            
+            <!-- STEP 4 -->
+            <div class="step" id="step4">
+                <div>
+                    <span class="step-number">4</span>
+                    <h3>Configure Git Locally</h3>
+                </div>
+                <p>Set up your Git configuration with your GitHub information.</p>
+                <div class="code-block">git config --global user.name "Your Full Name"
+git config --global user.email "your.email@github.com"</div>
+                <p><strong>Replace with your actual name and GitHub email address</strong></p>
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="copyCode('git config --global user.name \"Your Full Name\"\ngit config --global user.email \"your.email@github.com\"')">📋 Copy Commands</button>
+                    <button class="btn-primary" onclick="completeStep(4)">✓ Git Configured</button>
+                </div>
+            </div>
+            
+            <!-- STEP 5 -->
+            <div class="step" id="step5">
+                <div>
+                    <span class="step-number">5</span>
+                    <h3>Initialize & Commit</h3>
+                </div>
+                <p>Initialize Git in your project folder and create the first commit.</p>
+                <div class="code-block">cd "c:\Users\manis\OneDrive\Desktop\manisri\TruthLensAI"
+git init
+git add .
+git commit -m "Initial commit: TruthLens AI v1.0.0"</div>
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="copyCode('cd \"c:\\Users\\manis\\OneDrive\\Desktop\\manisri\\TruthLensAI\"\ngit init\ngit add .\ngit commit -m \"Initial commit: TruthLens AI v1.0.0\"')">📋 Copy Commands</button>
+                    <button class="btn-primary" onclick="completeStep(5)">✓ Repository Initialized</button>
+                </div>
+            </div>
+            
+            <!-- STEP 6 -->
+            <div class="step" id="step6">
+                <div>
+                    <span class="step-number">6</span>
+                    <h3>Connect to GitHub</h3>
+                </div>
+                <p>Connect your local repository to GitHub. Replace YOUR_USERNAME with your GitHub username.</p>
+                <div class="code-block">git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/TruthLensAI.git
+git push -u origin main</div>
+                <div class="warning">
+                    ⚠️ When prompted for password, use your Personal Access Token (not your GitHub password)
+                </div>
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="copyCode('git branch -M main\ngit remote add origin https://github.com/YOUR_USERNAME/TruthLensAI.git\ngit push -u origin main')">📋 Copy Commands</button>
+                    <button class="btn-primary" onclick="completeStep(6)">✓ Pushed to GitHub</button>
+                </div>
+            </div>
+            
+            <!-- STEP 7 -->
+            <div class="step" id="step7">
+                <div>
+                    <span class="step-number">7</span>
+                    <h3>Deploy to Streamlit Cloud (Optional)</h3>
+                </div>
+                <p>Deploy your app for free with Streamlit Cloud.</p>
+                <div class="checklist">
+                    <ul>
+                        <li>Go to Streamlit Cloud website</li>
+                        <li>Click "New app"</li>
+                        <li>Connect your GitHub account</li>
+                        <li>Select: YOUR_USERNAME / TruthLensAI / demo_app.py</li>
+                        <li>Click "Deploy"</li>
+                    </ul>
+                </div>
+                <div class="button-group">
+                    <a href="https://streamlit.io/cloud" target="_blank" class="link-button">☁️ Streamlit Cloud</a>
+                    <button class="btn-primary" onclick="completeStep(7)">✓ Deployment Complete</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SUCCESS MESSAGE -->
+        <div class="checklist" style="display: none;" id="finalMessage">
+            <h2 style="color: #4caf50; margin-bottom: 15px;">🎉 Deployment Complete!</h2>
+            <p style="color: #333; margin-bottom: 15px;">
+                Your TruthLens AI application is now live on GitHub! 
+                Share the repository URL with others and monitor contributions.
+            </p>
+            <p style="color: #666; margin-bottom: 15px;">
+                <strong>Repository URL:</strong> https://github.com/YOUR_USERNAME/TruthLensAI
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>TruthLens AI v1.0.0 | Intelligent Misinformation Detection System</p>
+            <p style="margin-top: 10px; color: #999;">
+                📚 <a href="GITHUB_DEPLOYMENT_GUIDE.md" style="color: #667eea; text-decoration: none;">View Full Guide</a> | 
+                🤝 <a href="https://github.com" style="color: #667eea; text-decoration: none;">GitHub</a> | 
+                📖 <a href="https://docs.github.com" style="color: #667eea; text-decoration: none;">GitHub Docs</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        let completedSteps = new Set();
+        
+        function completeStep(stepNum) {
+            completedSteps.add(stepNum);
+            document.getElementById('step' + stepNum).style.opacity = '0.6';
+            
+            // Update progress bar
+            const progress = (completedSteps.size / 7) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Show success message
+            const msg = document.getElementById('successMessage');
+            msg.style.display = 'block';
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+            
+            // Show final message when all complete
+            if (completedSteps.size === 7) {
+                document.getElementById('finalMessage').style.display = 'block';
+            }
+        }
+        
+        function copyCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ Commands copied to clipboard!\n\nNow paste them in PowerShell and press Enter.');
+            });
+        }
+    </script>
+</body>
+</html>
